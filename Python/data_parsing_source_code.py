@@ -127,6 +127,8 @@ def parseConfigFile(configFileName):
 def readAndParseData16xx(data_2,size_2, configParameters):
     print("---------------------Frame-------------------")
     global byteBuffer, byteBufferLength
+    print("byteBuffer : ", byteBuffer)
+    print("byteBufferLength : ", byteBufferLength)
 
 
     # Constants
@@ -429,13 +431,18 @@ def file_info(directory):
 
 
 
+
+
+
 # -------------------------------------------------    MAIN   -----------------------------------------
 
 
 # More than one input can be entered at once
 dat_files_number = list(map(int,input('Enter .dat files number : ').split()))
+print(dat_files_number)
 
 file_list = file_info(directory)
+print(file_list)
 
 # Foldering procedures for outputs
 if not (os.path.exists((os.getcwd() + "/figures").replace("\\", "/"))):
@@ -466,6 +473,7 @@ for i in dat_files_number:
     # find and read the relevant dat file
     fp = open(os.path.join(directory, file_list[(len(file_list) - 1) - (len(file_list) - i)]).replace("\\","/"),'rb')
     readNumBytes = os.path.getsize(os.path.join(directory, file_list[(len(file_list) - 1) - (len(file_list) - i)]).replace("\\","/"))
+    print(os.path.join(directory, file_list[(len(file_list) - 1) - (len(file_list) - i)]).replace("\\","/"))
     print("ReadNumBytes : ", readNumBytes)
     allBinData = fp.read()
     fp.close()
